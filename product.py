@@ -12,3 +12,6 @@ print(products)
 
 products[0][0] #把第零的商品拿出來
 
+for product in products:
+	print(product[0],'的價格是', product[1])
+
