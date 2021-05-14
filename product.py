@@ -1,13 +1,18 @@
+import os #operating system 用來確認檔案是不是存在
+
 #讀取檔案
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue #有點像break 但不會讓整個程式整個跳開
-		name, price = line.strip().split(',') #原先 name = s[0] & price = s[1]
-		products.append([name, price])
-print(products)
-
+if os.path.isfile('products.csv'): #isfile是一個功能 確認在不在
+	print('在唷在這裡, 找到檔案囉！')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue #有點像break 但不會讓整個程式整個跳開
+			name, price = line.strip().split(',') #原先 name = s[0] & price = s[1]
+			products.append([name, price])
+		print(products)
+else:
+	print('登愣 居然不在QQ')
 
 
 #讓使用者輸入
@@ -27,7 +32,6 @@ products[0][0] #把第零的商品拿出來
 #印出所有購買記錄
 for product in products:
 	print(product[0],'的價格是', product[1])
-
 
 
 #寫入檔案
