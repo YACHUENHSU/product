@@ -15,3 +15,7 @@ products[0][0] #把第零的商品拿出來
 for product in products:
 	print(product[0],'的價格是', product[1])
 
+with open('products.csv', 'w', encoding='utf-8') as f: #'w' write 寫入 #open打開檔案
+	f.write('商品,價格\n')
+	for p in products:
+		f.write(p[0] + ','+ p[1] + '\n')  #\n 是換行的意思
